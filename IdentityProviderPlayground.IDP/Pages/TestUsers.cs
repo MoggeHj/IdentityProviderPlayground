@@ -12,53 +12,31 @@ namespace IdentityProviderPlayground.IDP;
 
 public class TestUsers
 {
-    public static List<TestUser> Users
-    {
-        get
+    public static List<TestUser> Users =>
+        new()
         {
-            var address = new
+            new()
             {
-                street_address = "One Hacker Way",
-                locality = "Heidelberg",
-                postal_code = 69118,
-                country = "Germany"
-            };
-                
-            return new List<TestUser>
-            {
-                new TestUser
+                SubjectId = "1",
+                Username = "Morgan",
+                Password = "password",
+                Claims =
                 {
-                    SubjectId = "1",
-                    Username = "alice",
-                    Password = "alice",
-                    Claims =
-                    {
-                        new Claim(JwtClaimTypes.Name, "Alice Smith"),
-                        new Claim(JwtClaimTypes.GivenName, "Alice"),
-                        new Claim(JwtClaimTypes.FamilyName, "Smith"),
-                        new Claim(JwtClaimTypes.Email, "AliceSmith@email.com"),
-                        new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
-                        new Claim(JwtClaimTypes.WebSite, "http://alice.com"),
-                        new Claim(JwtClaimTypes.Address, JsonSerializer.Serialize(address), IdentityServerConstants.ClaimValueTypes.Json)
-                    }
-                },
-                new TestUser
-                {
-                    SubjectId = "2",
-                    Username = "bob",
-                    Password = "bob",
-                    Claims =
-                    {
-                        new Claim(JwtClaimTypes.Name, "Bob Smith"),
-                        new Claim(JwtClaimTypes.GivenName, "Bob"),
-                        new Claim(JwtClaimTypes.FamilyName, "Smith"),
-                        new Claim(JwtClaimTypes.Email, "BobSmith@email.com"),
-                        new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
-                        new Claim(JwtClaimTypes.WebSite, "http://bob.com"),
-                        new Claim(JwtClaimTypes.Address, JsonSerializer.Serialize(address), IdentityServerConstants.ClaimValueTypes.Json)
-                    }
+                    new Claim(JwtClaimTypes.GivenName, "Morgan"),
+                    new Claim(JwtClaimTypes.FamilyName, "Hjelm")
                 }
-            };
-        }
-    }
+            },
+            new()
+            {
+                SubjectId = "2",
+                Username = "Erik",
+                Password = "password",
+                Claims =
+                {
+                    new Claim(JwtClaimTypes.GivenName, "Erik"),
+                    new Claim(JwtClaimTypes.FamilyName, "Hjelm"),
+                    new Claim(JwtClaimTypes.Email, "ErikH@email.com")
+                }
+            }
+        };
 }
